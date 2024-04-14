@@ -1,0 +1,16 @@
+#page-list {
+  height: 100%;
+}
+#page-list {
+  overflow-y: scroll;
+  height: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+}
+#page-list > img {
+  height: auto;
+  width: 30%;
+  margin: auto;
+  border-radius: 15px;
+  padding: 0.25em;
+}

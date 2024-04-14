@@ -1,0 +1,8 @@
+#page-map-selection > div {
+  padding: 1em;
+  margin: 0.5em;
+  width: auto;
+  background-color: rgba(83, 83, 83, 0.5);
+  border-radius: 15px;
+  color: lightgray;
+}
