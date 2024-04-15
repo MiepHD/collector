@@ -1,7 +1,3 @@
-function $(elem) {
-  return document.querySelectorAll(elem);
-}
-
 function changeTo(dest) {
   for (elem of $('div[data-page]')) {
     elem.style.display =

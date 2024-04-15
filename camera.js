@@ -21,4 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(function success(stream) {
       video.srcObject = stream;
     });
+  $('body')[0].appendChild(video);
 });
