@@ -1,10 +1,104 @@
-html,
 body {
-  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
 }
-body {
+.card {
+  border-color: black;
+  border-width: 1px;
+  width: 8em;
+  height: 12em;
+  border-style: solid;
+  margin: 5px;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: lightgray;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-small;
+  display: flex;
+  flex-direction: column;
+}
+img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  min-height: 93px;
+}
+table {
+  border-collapse: collapse;
+  margin: 1ch auto;
+}
+table,
+td,
+th {
+  border: 1px solid;
+  padding: 3px;
+}
+.rating {
+  position: relative;
+  bottom: 0.3em;
+  font-size: medium;
+  float: right;
+}
+.story,
+.players {
+  font-size: large;
+}
+.players {
+  float: right;
+  position: relative;
+  bottom: 0.5em;
+}
+.container {
+  height: 2em;
+}
+.time {
+  font-size: small;
+}
+.bar {
+  height: 1.2em;
+  background-color: grey;
+  position: relative;
+}
+.progress {
+  top: -1px;
+  left: -1px;
+  position: absolute;
+  height: 100%;
+  background-color: greenyellow;
+}
+.bar,
+.progress {
+  border-radius: 5px;
+  border: 1px solid;
+  width: 100%;
+}
+.count {
+  position: relative;
+  z-index: 1;
+  padding: 0 2.5px;
+}
+p {
+  text-align: justify;
   margin: 0;
-  display: grid;
-  grid-template-rows: auto 3em;
-  background-color: black;
+}
+.fillstar {
+  display: inline-block;
+  width: 0.835em;
+}
+.outlinestar {
+  color: black;
+  position: relative;
+  left: -0.835em;
+}
+.space {
+  flex: 1;
+}
+input[type='file'] {
+  display: none;
+}
+input {
+  display: var(--show-questions);
+}
+p {
+  display: var(--show-description);
 }
