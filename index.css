@@ -93,12 +93,6 @@ p {
 .space {
   flex: 1;
 }
-input[type='file'] {
-  display: none;
-}
 input {
-  display: var(--show-questions);
-}
-p {
-  display: var(--show-description);
+  display: none;
 }

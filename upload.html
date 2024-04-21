@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload</title>
+    <link rel="stylesheet" href="upload.css" />
+    <script src="lib/base64.js"></script>
+    <script src="upload.js"></script>
+  </head>
+  <body>
+    <form action="./upload.php">
+      <input type="file" accept=".jpg,.jpeg,.png" />
+      <input type="number" name="id" />
+      <input type="submit" />
+    </form>
+    <p>Falsch <a href="./questions.html?id=">Retry</a></p>
+  </body>
+</html>
