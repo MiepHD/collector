@@ -9,10 +9,11 @@
     <script src="upload.js"></script>
   </head>
   <body>
-    <form action="./upload.php">
-      <input type="file" accept=".jpg,.jpeg,.png" />
+    <form action="./upload.php" method="POST">
+      <input type="file" accept=".jpg,.jpeg,.png" name="uploadedimage" />
+      <input type="text" name="username" value="user1" />
       <input type="number" name="id" />
-      <input type="submit" />
+      <input type="submit" name="upload" />
     </form>
     <p>Falsch <a href="./questions.html?id=">Retry</a></p>
   </body>

@@ -5,7 +5,7 @@ xhttp.onreadystatechange = function () {
   }
 };
 document.addEventListener('DOMContentLoaded', () => {
-  xhttp.open('GET', user + '/' + id + '.png', true);
+  xhttp.open('GET', '/' + id + '.png', true);
   xhttp.send();
   for (form of document.querySelectorAll('form')) {
     form.addEventListener(
