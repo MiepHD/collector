@@ -1,0 +1,16 @@
+{
+  "name": "Collector",
+  "short_name": "Collector",
+  "start_url": "index.html",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffd31d",
+  "background_color": "#333",
+  "display": "standalone"
+}
