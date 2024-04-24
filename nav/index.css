@@ -1,0 +1,19 @@
+nav {
+  position: absolute;
+  height: 3em;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: var(--secondary);
+  border-top: 3px solid black;
+}
+nav > a {
+  margin: auto;
+}
+nav > a > img {
+  height: 2em;
+}

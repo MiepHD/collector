@@ -2,6 +2,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   row-gap: 15px;
+  margin-bottom: 3em;
 }
 .card {
   border-color: black;
@@ -12,7 +13,7 @@ body {
   margin: 5px;
   border-radius: 15px;
   padding: 10px;
-  background-color: lightgray;
+  background-color: var(--primary);
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-small;
   display: flex;
@@ -21,8 +22,9 @@ body {
   background-repeat: no-repeat;
 }
 p {
-  text-align: justify;
   margin: 0;
+  font-size: medium;
+  text-align: center;
 }
 .space {
   flex: 1;

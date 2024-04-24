@@ -1,8 +1,12 @@
 data = [
-  {},
   {
+    description: 'First place to find',
+  },
+  {
+    description: 'Lorem ipsum',
     title: 'Titel',
     question: 'Frage',
+    tipp: 'ABC',
     answers: [
       {
         text: 'A',
@@ -22,4 +26,6 @@ data = [
       },
     ],
   },
+  {},
+  {},
 ];
