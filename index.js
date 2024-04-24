@@ -5,9 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
   id = 0;
   for (card of data) {
     elem = $(`
-        <form class="card" style="background-image: url(${card.image})" action="./questions.html">
+        <form class="card" style="background-image: url(${
+          localStorage.getItem(id)
+            ? 'data:image/gif;base64,' + localStorage.getItem(id)
+            : card.image
+        })" action="./questions.html">
           <input type="submit" />
-          <input type="number" value="${id}" name="id"/>
+          <input type="hidden" value="${id}" name="id"/>
         </form>
       `);
     elem.appendTo($('body'));

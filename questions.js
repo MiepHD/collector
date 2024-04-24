@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $(`
     <h1>${data[id].title}</h1>
     <form action="./upload.html">
-        <input type="number" name="id" value="${id}" />
+        <input type="hidden" name="id" value="${id}" />
         <p>${data[id].question}</p>
         <label for="a">${data[id].answers[0].text}</label>
         <input id="a" type="radio" name="answer" value="${data[id].answers[0].bool}">
