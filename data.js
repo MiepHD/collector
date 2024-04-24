@@ -16,6 +16,10 @@ data = [
         text: 'C',
         bool: false,
       },
+      {
+        text: 'D',
+        bool: true,
+      },
     ],
   },
 ];

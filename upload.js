@@ -20,7 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsBinaryString(e.currentTarget.files[0]);
       });
   } else {
-    document.querySelector('a').href += params.id;
+    if (params.id) {
+      document.querySelector('a').href += params.id;
+    } else {
+      document.querySelector('a').href = './index.html';
+    }
+
     document.querySelector('form').style.display = 'none';
   }
 });
