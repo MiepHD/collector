@@ -7,6 +7,7 @@ data = [
     title: 'Titel',
     question: 'Frage',
     tipp: 'ABC',
+    task: 'Take pic',
     answers: [
       {
         text: 'A',

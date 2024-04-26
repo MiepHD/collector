@@ -1,4 +1,4 @@
-input[type='file'] {
+form {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -6,4 +6,7 @@ input[type='file'] {
 }
 a {
   color: var(--accent);
+}
+p {
+  margin: 0.5em 0;
 }
