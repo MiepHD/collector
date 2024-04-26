@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
   id = 0;
   for (card of data) {
     elem = $(`
-        <form class="card" style="background-image: url(${localStorage.getItem(
-          id
-        )})" action="/questions">
+        <form class="card"${
+          localStorage.getItem(id)
+            ? ' style="background-image: url(' + localStorage.getItem(id) + ')"'
+            : ''
+        } action="/questions/index.html">
         <input type="submit" />
         <div class="space"></div>
         ${
