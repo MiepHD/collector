@@ -1,12 +1,12 @@
 nav {
-  position: absolute;
+  position: fixed;
   height: 3em;
   left: 0;
   bottom: 0;
   width: 100%;
   padding: 0.5em;
   box-sizing: border-box;
-  display: grid;
+  display: grid !important;
   grid-template-columns: auto auto;
   background-color: var(--secondary);
   border-top: 3px solid black;
