@@ -3,21 +3,18 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 });
 
 const reader = new FileReader();
-
-reader.addEventListener('loadend', () => {
-  base64 = btoa(reader.result);
-  localStorage.setItem(params.id, base64);
+reader.addEventListener('load', (e) => {
+  localStorage.setItem(params.id, e.target.result);
   location.href = '/cards';
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   if (params.answer == 'true') {
-    document.querySelector('input[type=number]').value = params.id;
-    document.querySelector('input[type=file]').click();
+    document.querySelector('form > p').innerHTML = data[params.id].task;
     document
       .querySelector('input[type=file]')
       .addEventListener('change', (e) => {
-        reader.readAsBinaryString(e.currentTarget.files[0]);
+        reader.readAsDataURL(e.currentTarget.files[0]);
       });
   } else {
     if (params.id) {

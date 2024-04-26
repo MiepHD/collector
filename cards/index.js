@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   id = 0;
   for (card of data) {
     elem = $(`
-        <form class="card" style="background-image: url(data:image/gif;base64,${localStorage.getItem(
+        <form class="card" style="background-image: url(${localStorage.getItem(
           id
         )})" action="/questions">
         <input type="submit" />
