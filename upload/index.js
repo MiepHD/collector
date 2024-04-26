@@ -3,19 +3,27 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 });
 
 const reader = new FileReader();
-reader.addEventListener('load', (e) => {
-  localStorage.setItem(params.id, e.target.result);
-  location.href = '/cards';
-});
+
+function upload(id, image) {}
+
+function save() {
+  file = document.querySelector('input[type=file]').files[0];
+  reader.addEventListener('load', (res) => {
+    image = JSON.stringify({
+      url: res.target.result,
+      name: file.name,
+    });
+    localStorage.setItem(params.id, LZString.compress(image));
+    location.href = '/cards';
+  });
+  reader.readAsDataURL(file);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   if (params.answer == 'true') {
     document.querySelector('form > p').innerHTML = data[params.id].task;
-    document
-      .querySelector('input[type=file]')
-      .addEventListener('change', (e) => {
-        reader.readAsDataURL(e.currentTarget.files[0]);
-      });
+    document.querySelector('input[type=file]').addEventListener('change', save);
+    document.querySelector('button').addEventListener('click', save);
   } else {
     if (params.id) {
       document.querySelector('a').href += params.id;

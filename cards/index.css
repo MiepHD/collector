@@ -7,6 +7,7 @@ body {
   justify-content: center;
 }
 .card {
+  position: relative;
   border-color: black;
   border-width: 1px;
   width: 30%;
@@ -34,4 +35,23 @@ p {
 }
 input {
   display: none;
+}
+.controls {
+  position: absolute;
+  background-color: var(--secondary);
+  padding: 0.25em;
+  width: min-content;
+  border-radius: 3px;
+}
+.controls > img {
+  height: 2em;
+  width: 2em;
+}
+.download {
+  left: 0;
+  border-radius: 0 3px 3px 0;
+}
+.delete {
+  right: 0;
+  border-radius: 3px 0 0 3px;
 }

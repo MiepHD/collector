@@ -4,19 +4,38 @@ function submit() {
 document.addEventListener('DOMContentLoaded', () => {
   id = 0;
   for (card of data) {
+    entry = localStorage.getItem(id);
+    image = undefined;
+    if (entry) {
+      obj = LZString.decompress(entry);
+      try {
+        image = JSON.parse(obj);
+      } catch {
+        localStorage.removeItem(id);
+        location.reload();
+      }
+    }
+    dataURL = image ? image.url : undefined;
     elem = $(`
         <form class="card"${
-          localStorage.getItem(id)
-            ? ' style="background-image: url(' + localStorage.getItem(id) + ')"'
+          dataURL != undefined
+            ? ' style="background-image: url(' + dataURL + ')"'
             : ''
         } action="/questions/index.html">
         <input type="submit" />
-        <div class="space"></div>
         ${
-          localStorage.getItem(id) != undefined
-            ? ''
-            : '<p>' + card.description + '</p>'
+          image
+            ? '<a class="controls download" download="' +
+              image.name +
+              '.png" href="' +
+              dataURL +
+              '"><img src="/assets/download.png"></a><div data-id="' +
+              id +
+              '" class="controls delete"><img src="/assets/delete.png"></div>'
+            : ''
         }
+        <div class="space"></div>
+        ${dataURL != undefined ? '' : '<p>' + card.description + '</p>'}
         <div class="space"></div>
           <input type="hidden" value="${id}" name="id"/>
         </form>
@@ -43,5 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       { once: true }
     );
+  }
+  for (button of document.querySelectorAll('.delete')) {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      localStorage.removeItem(e.currentTarget.getAttribute('data-id'));
+      location.reload();
+    });
+  }
+  for (button of document.querySelectorAll('.download')) {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
   }
 });
