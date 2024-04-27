@@ -6,10 +6,10 @@ body {
   height: calc(100% - 4em);
 }
 body > div {
-  background-image: url('./puzzle.png');
+  background-image: url('/assets/path.png');
   display: grid;
   grid-template-columns: repeat(var(--size), 1fr);
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1039 / 1805;
   width: 100%;
   background-size: contain;
   height: auto;

@@ -4,19 +4,56 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 const reader = new FileReader();
 
+function resize(imagePath, callback) {
+  const originalImage = new Image();
+  originalImage.src = imagePath;
+  const canvas = document.querySelector('canvas');
+  const ctx = canvas.getContext('2d');
+  originalImage.addEventListener('load', () => {
+    const originalWidth = originalImage.naturalWidth;
+    const originalHeight = originalImage.naturalHeight;
+    canvas.width = originalWidth;
+    canvas.height = originalHeight;
+    ctx.drawImage(originalImage, 0, 0, originalWidth, originalHeight);
+    callback(document.querySelector('canvas').toDataURL('image/jpeg', 0.3));
+  });
+}
+
+showError = () => {
+  document.getElementById('error').style.setProperty('display', 'block');
+};
+
 function save() {
   file = document.querySelector('input[type=file]').files[0];
   reader.addEventListener('load', (res) => {
-    image = JSON.stringify({
-      url: res.target.result,
-      name: file.name,
-    });
+    const image = res.target.result;
     try {
-      localStorage.setItem(params.id, LZString.compress(image));
+      localStorage.setItem(params.id + '_original', LZString.compress(image));
     } catch (e) {
-      document.getElementById('error').style.setProperty('display', 'block');
+      showError();
     }
-    location.href = '/cards';
+    resize(image, (resized) => {
+      compressed = false;
+      try {
+        localStorage.setItem(params.id + '_thumb', resized);
+      } catch (e) {
+        try {
+          localStorage.setItem(
+            params.id + '_thumb',
+            LZString.compress(resized)
+          );
+          compressed = true;
+        } catch (e) {
+          showError();
+        }
+      }
+      info = JSON.stringify({
+        compressed: compressed,
+        name: file.name,
+      });
+      localStorage.setItem(params.id + '_data', info);
+      location.href = '/cards';
+    });
   });
   reader.readAsDataURL(file);
 }

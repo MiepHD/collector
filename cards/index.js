@@ -2,16 +2,38 @@ function submit() {
   console.log('submitted');
 }
 document.addEventListener('DOMContentLoaded', () => {
+  for (key in localStorage) {
+    const arr = key.split('_');
+    const num = parseInt(arr[0]);
+    if (
+      !(
+        num < data.length &&
+        num > -1 &&
+        (arr[1] == 'data' || arr[1] == 'thumb' || arr[1] == 'original') &&
+        localStorage.getItem(num + '_data') != undefined &&
+        localStorage.getItem(num + '_thumb') != undefined &&
+        localStorage.getItem(num + '_original') != undefined
+      )
+    )
+      localStorage.removeItem(key);
+  }
   id = 0;
   for (card of data) {
-    entry = localStorage.getItem(id);
+    entry = localStorage.getItem(id + '_data');
     image = undefined;
     if (entry) {
-      obj = LZString.decompress(entry);
       try {
-        image = JSON.parse(obj);
+        info = JSON.parse(entry);
+        raw = localStorage.getItem(id + '_thumb');
+        thumb = info.compressed == 'true' ? LZString.decompress(raw) : raw;
+        image = {
+          url: thumb,
+          name: info.name,
+        };
       } catch {
-        localStorage.removeItem(id);
+        localStorage.removeItem(id + '_data');
+        localStorage.removeItem(id + '_thumb');
+        localStorage.removeItem(id + '_original');
         location.reload();
       }
     }
@@ -25,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <input type="submit" />
         ${
           image
-            ? '<a class="controls download" download="' +
+            ? '<div class="controls download" download="' +
               image.name +
-              '.png" href="' +
-              dataURL +
-              '"><img src="/assets/download.png"></a><div data-id="' +
+              '.png" data-id="' +
+              id +
+              '"><img src="/assets/download.png"></div><div data-id="' +
               id +
               '" class="controls delete"><img src="/assets/delete.png"></div>'
             : ''
@@ -66,13 +88,24 @@ document.addEventListener('DOMContentLoaded', () => {
   for (button of document.querySelectorAll('.delete')) {
     button.addEventListener('click', (e) => {
       e.stopPropagation();
-      localStorage.removeItem(e.currentTarget.getAttribute('data-id'));
+      const id = e.currentTarget.getAttribute('data-id');
+      localStorage.removeItem(id + '_data');
+      localStorage.removeItem(id + '_thumb');
+      localStorage.removeItem(id + '_original');
       location.reload();
     });
   }
   for (button of document.querySelectorAll('.download')) {
     button.addEventListener('click', (e) => {
       e.stopPropagation();
+      const raw = localStorage.getItem(
+        e.currentTarget.getAttribute('data-id') + '_original'
+      );
+      const url = LZString.decompress(raw);
+      const link = document.querySelector('body > a');
+      link.setAttribute('download', e.currentTarget.getAttribute('download'));
+      link.setAttribute('href', url);
+      link.click();
     });
   }
 });
