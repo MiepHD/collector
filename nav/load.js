@@ -5,6 +5,4 @@ xhttp.onreadystatechange = function () {
   }
 };
 xhttp.open('GET', '/nav/index.html', true);
-document.addEventListener('DOMContentLoaded', () => {
-  xhttp.send();
-});
+xhttp.send();
