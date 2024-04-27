@@ -1,16 +1,78 @@
 {
   "name": "Collector",
   "short_name": "Collector",
-  "start_url": "index.html",
+  "start_url": "/cards/index.html",
   "scope": "./",
   "icons": [
     {
-      "src": "/icon.png",
+      "src": "/assets/icons/icon.ico",
+      "sizes": "256x256",
+      "type": "image/ico",
+      "purpose": "monochrome"
+    },
+    {
+      "src": "/assets/icons/mono_icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "monochrome"
+    },
+    {
+      "src": "/assets/icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/maskable/icon_x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/maskable/icon_x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/maskable/icon_x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/maskable/icon_x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/maskable/icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/maskable/icon_x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/maskable/icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/maskable/icon.png",
+      "sizes": "853x853",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffd31d",
-  "background_color": "#333",
-  "display": "standalone"
+  "theme_color": "#9da45b",
+  "background_color": "#737373",
+  "display": "standalone",
+  "orientation": "portrait"
 }
