@@ -19,6 +19,34 @@ function resize(imagePath, callback) {
   });
 }
 
+function saveSplitted(key, val) {
+  count = 0;
+  oi = 0;
+  for (i = 100000; i < val.length; i + 100000) {
+    if (i >= val.length) i = val.length - 1;
+    sub = val.substr(oi, i);
+    console.log(sub.length);
+    localStorage.setItem(key + '-' + count, sub);
+    oi = i + 1;
+    count++;
+  }
+  return count;
+}
+
+function saveResized(resized) {
+  try {
+    localStorage.setItem(params.id + '_thumb', resized);
+  } catch (e) {
+    try {
+      localStorage.setItem(params.id + '_thumb', LZString.compress(resized));
+      return true;
+    } catch (e) {
+      return resize(resized, saveResized);
+    }
+  }
+  return false;
+}
+
 showError = () => {
   document.getElementById('error').style.setProperty('display', 'block');
 };
@@ -27,33 +55,20 @@ function save() {
   file = document.querySelector('input[type=file]').files[0];
   reader.addEventListener('load', (res) => {
     const image = res.target.result;
+    const dataToSave = LZString.compress(image);
+    console.log(dataToSave.length);
     try {
-      localStorage.setItem(params.id + '_original', LZString.compress(image));
+      localStorage.setItem(params.id + '_original', dataToSave);
     } catch (e) {
-      showError();
+      saveSplitted(params.id + '_original', dataToSave);
     }
-    resize(image, (resized) => {
-      compressed = false;
-      try {
-        localStorage.setItem(params.id + '_thumb', resized);
-      } catch (e) {
-        try {
-          localStorage.setItem(
-            params.id + '_thumb',
-            LZString.compress(resized)
-          );
-          compressed = true;
-        } catch (e) {
-          showError();
-        }
-      }
-      info = JSON.stringify({
-        compressed: compressed,
-        name: file.name,
-      });
-      localStorage.setItem(params.id + '_data', info);
-      location.href = '/cards';
+    const compressed = resize(image, saveResized);
+    info = JSON.stringify({
+      compressed: compressed,
+      name: file.name,
     });
+    localStorage.setItem(params.id + '_data', info);
+    //location.href = '/cards';
   });
   reader.readAsDataURL(file);
 }
