@@ -4,8 +4,6 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 const reader = new FileReader();
 
-function upload(id, image) {}
-
 function save() {
   file = document.querySelector('input[type=file]').files[0];
   reader.addEventListener('load', (res) => {
@@ -13,7 +11,11 @@ function save() {
       url: res.target.result,
       name: file.name,
     });
-    localStorage.setItem(params.id, LZString.compress(image));
+    try {
+      localStorage.setItem(params.id, LZString.compress(image));
+    } catch (e) {
+      document.getElementById('error').style.setProperty('display', 'block');
+    }
     location.href = '/cards';
   });
   reader.readAsDataURL(file);
@@ -21,6 +23,7 @@ function save() {
 
 document.addEventListener('DOMContentLoaded', () => {
   if (params.answer == 'true') {
+    document.querySelector('body > p').style.setProperty('display', 'none');
     document.querySelector('form > p').innerHTML = data[params.id].task;
     document.querySelector('input[type=file]').addEventListener('change', save);
     document.querySelector('button').addEventListener('click', save);

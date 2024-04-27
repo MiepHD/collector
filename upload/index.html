@@ -19,8 +19,10 @@
   <body>
     <form>
       <p></p>
-      <input type="file" accept="image/*" capture="environment" />
+      <input id="upload" type="file" accept="image/*" capture="environment" />
+      <label for="upload">Hochladen</label>
       <button type="button">Speichern</button>
+      <p id="error">Datei ist zu groß!</p>
     </form>
     <p>Falsch <a href="/questions?id=">Zurück</a></p>
   </body>

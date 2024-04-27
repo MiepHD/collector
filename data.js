@@ -1,13 +1,10 @@
 data = [
   {
-    description: 'First place to find',
-  },
-  {
     description: 'Lorem ipsum',
     title: 'Titel',
     question: 'Frage',
     tipp: 'ABC',
-    task: 'Take pic',
+    task: 'Take pic<img src="/assets/vorlagen/Kondensatableiter.jpeg" />',
     answers: [
       {
         text: 'A',
