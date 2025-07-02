@@ -1,6 +1,6 @@
 # Collector
 
-Collector is an app you can use for people to let them document their experience of a planned trip or something like that. So how it works: You have a list of cards that you have to unlock. For unlocking you have to answer a connected question right. If answered correctly you can take a picture that will then show up on the card instead of the name. To see your progress there is another page. It contains a hidden image that reveals more and more the more cards you fill with your taken images.
+Collector is an app you can use for people to let them document their experience of a planned trip. How it works: You have a list of cards that you have to unlock. For unlocking you have to answer a connected question. If answered correctly you can take a picture that will then show up on the card instead of the name. To see your progress there is another page. It contains a hidden image that reveals more and more the more cards you fill with your taken images.
 
 It's made as a progressive web app and works fully locally (and offline once installed). So you can host it on your server but also on servers like github as it is an html, js, css only page. All images you submit are stored in your browser and won't be sent to a server.
 
