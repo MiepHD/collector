@@ -28,3 +28,7 @@ data = [
   ... //You can add unlimited more cards
 ];
 ```
+
+### History
+
+I created this app for a family trip to England. We went to the different places and searched for the needed information. When we found it, we answered the question and made a picture of the sight. It was really fun to do it.
