@@ -4,6 +4,9 @@ Collector is an app you can use for people to let them document their experience
 
 It's made as a progressive web app and works fully locally (and offline once installed). So you can host it on your server but also on servers like github as it is an html, js, css only page. All images you submit are stored in your browser and won't be sent to a server.
 
+![image](https://github.com/user-attachments/assets/4b1a978f-2979-439f-a594-e4c17f661bb2)
+
+
 ## How to use
 
 Create a file called `/data.js`. Input the data in JSON format with the structure below. In `/assets` add an image called `path.png`. This will be the image that gets reveald. Then upload your version to a server of your choice. Install the PWA through selecting install or add to homescreen (depends on your browser)
@@ -29,6 +32,6 @@ data = [
 ];
 ```
 
-### Background info
+# Background info
 
-I created this app for a family trip to England. We went to the different places and searched for the needed information. When we found it, we answered the question and made a picture of the sight. It was really fun to do it.
+I created this app for a family trip to England. We went to the different places and searched for the needed information. When we found it, we answered the question and made a picture of the sight. It was really fun to do.
